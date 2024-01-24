@@ -1,11 +1,15 @@
 const cells = document.querySelectorAll
 (".cell")
+const restartBtn = document.getElementById("restart-btn");
+
+
 let currentPlayer = '❌';
 let gameOver = false;
 
 cells.forEach(cell =>{
     cell.addEventListener("click",handeClick)
 })
+restartBtn.addEventListener("click", restartGame);
 
 function handeClick(e){
 const cell = e.target;
@@ -65,4 +69,12 @@ function checkDraw(){
     }
         return true;
     
+}
+
+function restartGame() {
+    cells.forEach(cell => {
+        cell.textContent = '';
+    });
+    currentPlayer = '❌';
+    gameOver = false;
 }
